@@ -1,41 +1,42 @@
 from string import printable
 
 
-def encrypt(value: str, key: int) -> str:
+def encrypt(value: str, step: int) -> str:
     alpha = printable
     result = ""
 
     for ch in value:
-        new_key = (alpha.index(ch) + key) % len(alpha)
-        result += alpha[new_key]
+        new_index = (alpha.index(ch) + step) % len(alpha)
+        result += alpha[new_index]
 
     return result
 
 
-def decrypt(value: str, key: int) -> str:
-    key *= -1
-    return encrypt(value, key)
+def decrypt(value: str, step: int) -> str:
+    step *= -1
+    return encrypt(value, step)
 
 
 def brute_force(value: str):
     alpha = printable
-    key = 1
+    step = 1
     brute_force_data = {}
 
-    while key <= len(alpha):
-        result = decrypt(value, key)
-        brute_force_data[key] = result
-        key += 1
+    while step <= len(alpha):
+        result = decrypt(value, step)
+        brute_force_data[step] = result
+        step += 1
 
     return brute_force_data
 
 
-text = "Hello Python"
+text = input("Enter Message: ")
+step = int(input("Enter Step: "))
 
-encrypt_text = encrypt(text, 5)
+encrypt_text = encrypt(text, step)
 print(encrypt_text)
 
-decrypt_text = decrypt(encrypt_text, 5)
+decrypt_text = decrypt(encrypt_text, step)
 print(decrypt_text)
 
 brute_force_results = brute_force(encrypt_text)
