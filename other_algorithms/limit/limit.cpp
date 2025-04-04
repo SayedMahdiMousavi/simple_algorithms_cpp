@@ -1,33 +1,56 @@
-// Not Completed
-
 #include <iostream>
 #include <algorithm>
+#include <vector>
+#include <string>
 
 using namespace std;
 
 
-// int min_element(int arr[], int n)
-// {
-//   // if size = 0 means whole array has been traversed
-//   if (n == 1)
-//     return arr[0];
-//   return min(arr[n-1], min_element(arr, n-1));
-// }
+int check_minmax(vector<int> array){
+
+    if(array.size() == 0){
+        return 0;
+    }
+
+    int min_val=NULL, max_val=NULL;
+    std::cout << "Enter Min Value: ";
+    std::cin >> min_val;
+    std::cout << std::endl;
+
+    std::cout << "Enter Max Value: ";
+    std::cin >> max_val;
+    std::cout << std::endl;
+
+    // std::cout << "Min Value: " << min_val << " - " << "Max Value: " << max_val << std::endl;
+    return min_val, max_val;
+
+}
 
 int main(){
-    int min_val=NULL, max_val=NULL;
-    auto  array = {2, 4, 9, 1, 3, 7, 6, 5};
-    // auto [min_val, max_val] = std::minmax_element(array.begin(), array.end());
-    
-    if(min_val == 0){
-        auto min_val = std::min_element(array.begin(), array.end());
-        std::cout << *min_val << std::endl;
-    }
-    if(max_val == 0){
-        auto max_val = std::max_element(array.begin(), array.end());
-        std::cout << *max_val << std::endl;
-    }
-    
 
+    vector<int> array = {2, 4, 9, -1, 3, 7, -6, 5};
+    vector<int> result;
+
+    int min_val, max_val = check_minmax(array);
+    std::cout << "Min Value: " << min_val << " - " << "Max Value: " << max_val << std::endl;    
+
+    if(min_val == NULL){
+        auto min_check = std::min_element(array.begin(), array.end());
+        min_val = *min_check;
+    }
+
+    if(max_val == NULL){
+        auto max_check = std::max_element(array.begin(), array.end());
+        max_val = *max_check;   
+    }
+
+    for(int item: array){
+        if(item >= min_val & item <= max_val)
+            result.push_back(item);
+    }
+
+    for(int i: result)
+        cout << i << " ";
+    
     return 0;
 }

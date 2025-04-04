@@ -32,6 +32,23 @@ def advance_limit(arr:List, min_val:int=None, max_val:int=None):
     return [val for val in arr if min_check(val) and max_check(val)]
  
 
-print(limit_from_scratch([2, 4, 9, 1, 3, 7, 6, 5], min_val=2, max_val=6))
-print(simple_limit([2, 4, 9, 1, 3, 7, 6, 5], min_val=2, max_val=6))
-print(advance_limit([2, 4, 9, 1, 3, 7, 6, 5], min_val=2, max_val=6))
+array = list(map(int, input("Enter elemnts array: ").split(",")))
+
+min_val = input("Enter Min Value: ")
+max_val = input("Enter Max Value: ")
+
+if min_val == "" and max_val == "":
+    min_val, max_val = None, None
+elif min_val != "" and max_val == "":
+    min_val = int(min_val)
+    max_val = None
+elif min_val == "" and max_val != "":
+    min_val = None
+    max_val = int(max_val)    
+else:
+    min_val = int(min_val)
+    max_val = int(max_val)
+
+print(limit_from_scratch(array, min_val, max_val))
+print(simple_limit(array, min_val, max_val))
+print(advance_limit(array, min_val, max_val))
