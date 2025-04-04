@@ -1,16 +1,11 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <string>
 
 using namespace std;
 
 
-int check_minmax(vector<int> array){
-
-    if(array.size() == 0){
-        return 0;
-    }
+tuple<int, int> check_minmax(vector<int> array){
 
     int min_val=NULL, max_val=NULL;
     std::cout << "Enter Min Value: ";
@@ -21,17 +16,19 @@ int check_minmax(vector<int> array){
     std::cin >> max_val;
     std::cout << std::endl;
 
-    // std::cout << "Min Value: " << min_val << " - " << "Max Value: " << max_val << std::endl;
-    return min_val, max_val;
+    return {min_val, max_val};
 
 }
 
 int main(){
-
     vector<int> array = {2, 4, 9, -1, 3, 7, -6, 5};
     vector<int> result;
 
-    int min_val, max_val = check_minmax(array);
+    if(array.size() == 0){
+        return 0;
+    }
+
+    auto [min_val, max_val] = check_minmax(array);
     std::cout << "Min Value: " << min_val << " - " << "Max Value: " << max_val << std::endl;    
 
     if(min_val == NULL){
