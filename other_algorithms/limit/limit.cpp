@@ -45,7 +45,7 @@ int main(int argc, char** argv){
     vector<int> result;
 
     
-    std::cout << "Enter Array Elennts: ";
+    std::cout << "c ";
     getline(std::cin, input_str);
     stringstream ss(input_str);
     std::string temp;
