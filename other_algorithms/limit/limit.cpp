@@ -1,48 +1,80 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <sstream>
+#include <optional>
 
 using namespace std;
 
+optional<int> parse_input(const string& input) {
+    // Pressing the Enter key without entering a value
+    if (input.empty()) {
+        return nullopt;
+    }
 
-tuple<int, int> check_minmax(vector<int> array){
+    stringstream ss(input);
+    int number;
+    ss >> number;
 
-    int min_val=NULL, max_val=NULL;
-    std::cout << "Enter Min Value: ";
-    std::cin >> min_val;
-    std::cout << std::endl;
+    // insert invalid value
+    if (ss.fail() || !ss.eof()) {
+        return nullopt; 
+    }
 
-    std::cout << "Enter Max Value: ";
-    std::cin >> max_val;
-    std::cout << std::endl;
-
-    return {min_val, max_val};
-
+    return number;
 }
 
-int main(){
-    vector<int> array = {2, 4, 9, -1, 3, 7, -6, 5};
+tuple<int, int> check_minmax(const vector<int>& array, optional<int> min_val_opt, optional<int> max_val_opt) {
+    int actual_min = *min_element(array.begin(), array.end());
+    int actual_max = *max_element(array.begin(), array.end());
+    
+    int min_val = min_val_opt.value_or(actual_min);
+    int max_val = max_val_opt.value_or(actual_max);
+
+    if (min_val > max_val) {
+        swap(min_val, max_val);
+    }
+
+    return {min_val, max_val};
+}
+
+
+int main(int argc, char** argv){
+    std::string input_str;
+    vector<int> array;
     vector<int> result;
 
-    if(array.size() == 0){
+    
+    std::cout << "Enter Array Elennts: ";
+    getline(std::cin, input_str);
+    stringstream ss(input_str);
+    std::string temp;
+    char delimiter = ',';
+    while (getline(ss,temp, delimiter))
+    {
+        array.push_back(std::stoi(temp));
+    }
+
+    if(array.empty()){
+        std::cerr << "Array is empty." << std::endl;
         return 0;
     }
 
-    auto [min_val, max_val] = check_minmax(array);
-    std::cout << "Min Value: " << min_val << " - " << "Max Value: " << max_val << std::endl;    
+    optional<int> min_val, max_val;
 
-    if(min_val == NULL){
-        auto min_check = std::min_element(array.begin(), array.end());
-        min_val = *min_check;
-    }
+    std::cout << "Enter Min Value: ";
+    getline(std::cin, input_str);
+    min_val = parse_input(input_str);
 
-    if(max_val == NULL){
-        auto max_check = std::max_element(array.begin(), array.end());
-        max_val = *max_check;   
-    }
+    std::cout << "Enter Max Value: ";
+    getline(std::cin, input_str);
+    max_val = parse_input(input_str);
+
+    auto [filtered_min, filtered_max] = check_minmax(array, min_val, max_val);
+    std::cout << "Min Value: " << filtered_min << " - " << "Max Value: " << filtered_max << std::endl;    
 
     for(int item: array){
-        if(item >= min_val & item <= max_val)
+        if(item >= filtered_min && item <= filtered_max)
             result.push_back(item);
     }
 
