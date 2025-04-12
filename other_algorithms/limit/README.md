@@ -1,9 +1,11 @@
 # Limit Algorithm
 
-### python:
+## python
+
     $ python3 limit.py
 
-### c++:
+## c++
+
     $ g++ limit.cpp -o output
     $ ./output
     
@@ -13,4 +15,3 @@
               Enter Max Value: 8
 
               Output: 5 7 2 8 5
-

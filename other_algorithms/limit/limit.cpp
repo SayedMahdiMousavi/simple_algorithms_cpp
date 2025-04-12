@@ -45,7 +45,7 @@ int main(int argc, char** argv){
     vector<int> result;
 
     
-    std::cout << "c ";
+    std::cout << "Enter the array elements (separate elements with commas): ";
     getline(std::cin, input_str);
     stringstream ss(input_str);
     std::string temp;
