@@ -6,6 +6,6 @@ def linear_search(array, element):
 
 
 array = list(map(int, input("Enter elemnts array: ").split(",")))
-element = int(input("Enter Value: "))
+element = int(input("Enter element: "))
 
 print(linear_search(array, element))
