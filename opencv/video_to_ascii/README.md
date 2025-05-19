@@ -1,7 +1,9 @@
 # Convert video to ascii and display in terminal
 
 ## python
+    coming soon
 
+    
 ## c++
 
     $ mkdir build
