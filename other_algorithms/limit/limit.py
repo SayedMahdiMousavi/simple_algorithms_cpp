@@ -49,6 +49,7 @@ else:
     min_val = int(min_val)
     max_val = int(max_val)
 
+
 print(limit_from_scratch(array, min_val, max_val))
 print(simple_limit(array, min_val, max_val))
 print(advance_limit(array, min_val, max_val))
