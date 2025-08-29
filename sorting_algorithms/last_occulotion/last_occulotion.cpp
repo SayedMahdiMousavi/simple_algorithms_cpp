@@ -36,11 +36,11 @@ int main(){
     
     cout << "Enter target: ";
     cin >> target;
-
+ 
     while (low <= high)
     {
         int mid = low + (high - low) / 2;
-        if((array[mid] == target) && (mid == (array.size() - 1)) || ((array[mid] == target) && (array[mid+1] > target))){
+        if((array[mid] == target) & (mid == (array.size() - 1)) | ((array[mid] == target) & (array[mid+1] > target))){
             cout << "Find Target, index is: " << mid << endl;
             return mid;
         }
