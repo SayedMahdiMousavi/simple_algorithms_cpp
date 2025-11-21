@@ -6,13 +6,20 @@ using namespace std;
 
 std::string encrypt(std::string value, int step){
     string alpha, result;
-    int new_index;
+    int new_index, pos;
 
     for (char c{' '}; c <= '~'; ++c)
         alpha += c;
 
+    int length = alpha.size();
+
     for(auto ch: value){
-        new_index = (alpha.find(ch) + step) % alpha.size();
+        pos = alpha.find(ch);
+        new_index = (pos + step) % length;
+
+        if(new_index < 0){
+            new_index += length;
+        }
         result += alpha[new_index];
     }
 
