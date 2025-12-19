@@ -2,7 +2,7 @@
 
 ## python
 
-    $ python3 quic_sort.py
+    $ python3 quick_sort.py
 
     Example:
             
@@ -13,7 +13,7 @@
 
 ## c++
 
-    $ g++ selection_sort.cpp -o output
+    $ g++ quick_sort.cpp -o output
     $ ./output
     
     Example:
