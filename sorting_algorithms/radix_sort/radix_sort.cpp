@@ -45,13 +45,23 @@ int main(){
     // int max_number = max_vaL(array);
     int max_number = * std::max_element(array.begin(), array.end());
 
-    // while (position <= max_number){
-    //     int *a[10] = { NULL };
-    //     for(int num: array){
-    //         int digit_number = num; / position % 10;
-            
-    //     }
-    // }
-
+    while (position <= max_number){
+        vector<vector<int>> queue_list = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
+        for(int num: array){
+            int digit_number = num / position % 10;
+            queue_list[digit_number].push_back(num);
+        }
+        int index = 0;
+        for(auto numbers: queue_list){
+            for(int num: numbers){
+                array[index] = num;
+                index += 1;
+            }
+        }
+        position *= 10;
+    }
+    for(int x: array){
+        cout << x << ",";
+    }
     return 0;
 }
