@@ -61,7 +61,7 @@ int main(){
         position *= 10;
     }
     for(int x: array){
-        cout << x << ",";
+        cout << x << ", ";
     }
     return 0;
 }
