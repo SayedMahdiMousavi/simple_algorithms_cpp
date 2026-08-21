@@ -1,4 +1,4 @@
-# Object Tracking with Template Matching 
+# Object Tracking with Template Matching
 
 ## python
 
@@ -7,7 +7,7 @@
 
     Example:
             Enter Path and Name Source Video(Search): ./videos/video_1.mp4
-            Enter Threshold(float): 0.8
+            Enter Threshold(float): 0.4
             
 
 ## c++
@@ -20,5 +20,5 @@
             * Arg2: show template image in new window(yes: show template/ no: don't show)
             * Arg3: Thereshold(float) - if the max_val value becomes smaller than this value,
                     the program will break.
-                    
+
             ./output ./videos/video_1.mp4 yes 0.4

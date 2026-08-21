@@ -38,9 +38,9 @@ if video_capture.isOpened():
 
             end = (time.time() - start) * 1000
 
-            if max_val >= threshold:
-                console.print(rf" ***** Save Tamplate Image in Cache ***** ", style="#CFF800")
-                template_image_t1 = template_image
+            # if max_val >= 0.8:
+            #     console.print(rf" ***** Save Tamplate Image in Cache ***** ", style="#CFF800")
+            #     template_image_t1 = template_image
 
             # Object Loss
             if max_val < 0.75:    
@@ -56,7 +56,7 @@ if video_capture.isOpened():
                     console.print(" !!!!! Template Image is Empty !!!!! ", style="#FF5C77")
                     break
                 
-                if max_val <= 0.4 and counter_loss >= 3:
+                if max_val <= threshold and counter_loss >= 3:
                     console.print(" ***** Object Loss And Break ***** ", style="#FF5768")
                     break
             
