@@ -4,10 +4,18 @@
 using namespace std;
 using namespace cv;
 
+int main(int argc, char* argv[]){
+    if (argc < 3) {
+        std::cerr << "Usage: " << argv[0] << " template image path" << std::endl;
+        std::cerr << "Usage: " << argv[1] << " search image path" << std::endl;
+        return 1;
+    }
 
-int main(){
-    cv::Mat template_image = cv::imread("./images/template.png", cv::IMREAD_GRAYSCALE);
-    cv::Mat search_image = cv::imread("./images/search.png");
+    std::string template_image_name = argv[1];
+    std::string search_image_name = argv[2];
+
+    cv::Mat template_image = cv::imread(template_image_name, cv::IMREAD_GRAYSCALE);
+    cv::Mat search_image = cv::imread(search_image_name);
 
     cv::Mat search_image_gray;
     cv::cvtColor(search_image, search_image_gray, cv::COLOR_BGR2GRAY);
